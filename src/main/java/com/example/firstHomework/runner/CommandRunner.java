@@ -9,7 +9,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.time.Instant;
-
+import java.util.Optional;
 
 @Component
 public class CommandRunner implements CommandLineRunner {
@@ -24,6 +24,8 @@ public class CommandRunner implements CommandLineRunner {
 
         createUser();
         createAddress();
+        getUser();
+        getAddress();
 
     }
 
@@ -65,6 +67,22 @@ public class CommandRunner implements CommandLineRunner {
 
         addressRepository.save(address1);
 
+    }
+
+    public void getUser() {
+        Optional<User> user1 = userRepository.findById(1L);
+        user1.ifPresent(value -> System.out.println());
+
+        Optional<User> user2 = userRepository.findById(1L);
+        user2.ifPresent(value -> System.out.println());
+    }
+
+    public void getAddress() {
+        Optional<Address> address1 = addressRepository.findById(1L);
+        address1.ifPresent(value -> System.out.println());
+
+        Optional<Address> address2 = addressRepository.findById(1L);
+        address2.ifPresent(value -> System.out.println());
     }
 
 }

@@ -1,8 +1,6 @@
 package com.example.firstHomework.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
@@ -15,6 +13,7 @@ import lombok.Setter;
 public class Address {
 
         @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
         private Long id;
         @Column(name = "country")
         private  String country;
@@ -24,5 +23,7 @@ public class Address {
         private String street;
         @Column(name = "street number")
         private String streetNumber;
+        @ManyToOne
+        private User user;
 
 }
